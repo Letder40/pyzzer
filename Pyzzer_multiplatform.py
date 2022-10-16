@@ -50,6 +50,10 @@ def create():
     error = True
     while(error):
         file_name = input(Fore.CYAN + "Nombre del quizz?" + Style.RESET_ALL + "\n" + prompt)
+        if file_name == "quit":
+            clear()
+            console() 
+            
         # Windows
         if sistema == "Windows":
             quizes_folder = get_winroute()
@@ -80,8 +84,19 @@ def create():
     respuestas = []
 
     for i in range(numero_preguntas):
-        preguntas.append(input(Fore.YELLOW + "pregunta "+ str(i+1) + Style.RESET_ALL + "\n" + prompt))
-        respuestas.append(input(Fore.YELLOW + "respuesta " + Style.RESET_ALL + "\n" + prompt))  
+        pregunta = input(Fore.YELLOW + "pregunta "+ str(i+1) + Style.RESET_ALL + "\n" + prompt)
+        if pregunta == "quit":
+            clear()
+            console()
+            
+        respuesta = input(Fore.YELLOW + "respuesta " + Style.RESET_ALL + "\n" + prompt)
+        if respuesta == "quit":
+            clear()
+            console()
+              
+        preguntas.append(pregunta)
+        preguntas.append(respuesta)
+        
         if i+1 == numero_preguntas:
             clear()
             print(Fore.CYAN + "[#] Quizz generado \n")
@@ -116,6 +131,11 @@ def use():
     while(error):
 
         file_name = input(Fore.CYAN + "Nombre del quizz a usar?" + Style.RESET_ALL + "\n" + prompt)
+        
+        if file_name == "exit":
+            clear()
+            console() 
+            
         # Windows
         if sistema == "Windows":
             quizes_folder = get_winroute()
