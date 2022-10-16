@@ -84,18 +84,18 @@ def create():
     respuestas = []
 
     for i in range(numero_preguntas):
-        pregunta = input(Fore.YELLOW + "pregunta "+ str(i+1) + Style.RESET_ALL + "\n" + prompt)
-        if pregunta == "quit":
+        add_pregunta = input(Fore.YELLOW + "pregunta "+ str(i+1) + Style.RESET_ALL + "\n" + prompt)
+        if add_pregunta == "quit":
             clear()
             console()
             
-        respuesta = input(Fore.YELLOW + "respuesta " + Style.RESET_ALL + "\n" + prompt)
-        if respuesta == "quit":
+        add_respuesta = input(Fore.YELLOW + "respuesta " + Style.RESET_ALL + "\n" + prompt)
+        if add_respuesta == "quit":
             clear()
             console()
               
-        preguntas.append(pregunta)
-        preguntas.append(respuesta)
+        preguntas.append(add_pregunta)
+        respuestas.append(add_respuesta)
         
         if i+1 == numero_preguntas:
             clear()
@@ -120,6 +120,7 @@ def create():
                     f.write(str(number) + ". " + pregunta + "\n")
                     f.write("   " + respuestas[number-1] + "\n")
                     number = number + 1
+                    f.close()
                 print(Fore.GREEN + "\n guardado \n")
                 input(Fore.YELLOW + "pulsa enter para continuar [ <--| ]")
     clear() 
@@ -132,7 +133,7 @@ def use():
 
         file_name = input(Fore.CYAN + "Nombre del quizz a usar?" + Style.RESET_ALL + "\n" + prompt)
         
-        if file_name == "exit":
+        if file_name == "quit":
             clear()
             console() 
             
@@ -201,6 +202,7 @@ def use():
     else:
         print("\n" + Fore.YELLOW + "[#] Tu nota es = " + Fore.RED + str(nota) + Style.RESET_ALL + "/"+str(number_questions) + " -> " + Fore.RED + str(nota_final))
     input(Fore.YELLOW + "\npulsa enter para continuar [ <--| ]")
+    file.close()
     clear()
     console()
 
