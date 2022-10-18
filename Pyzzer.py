@@ -120,9 +120,9 @@ def create():
                     f.write(str(number) + ". " + pregunta + "\n")
                     f.write("   " + respuestas[number-1] + "\n")
                     number = number + 1
-                    f.close()
                 print(Fore.GREEN + "\n guardado \n")
                 input(Fore.YELLOW + "pulsa enter para continuar [ <--| ]")
+                f.close()
     clear() 
     console()
 
